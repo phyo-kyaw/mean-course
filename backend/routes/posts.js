@@ -49,7 +49,12 @@ router.post(
           id: createdPost._id
         }
       });
-    });
+    })
+    .catch( error => {
+      res.status(500).json({
+        message: "Creating a post failed!"
+      })
+    })
 });
 
 router.get('', (req, res, next) => {
@@ -69,14 +74,18 @@ router.get('', (req, res, next) => {
       return Post.count();
     })
     .then( count => {
-    res.status(200).json({
-      message: 'Posts fetched successfully!',
-      posts: fetchedPosts,
-      maxPosts: count
-    });
+      res.status(200).json({
+        message: 'Posts fetched successfully!',
+        posts: fetchedPosts,
+        maxPosts: count
+      });
+    })
+    .catch(error => {
+      res.status(500).json({
+        message: "Fetching posts failed!"
+      })
+    })
   });
-
-} );
 
 router.get('/:id', (req, res, next) => {
   Post.findById(req.params.id).then(post => {
@@ -87,9 +96,14 @@ router.get('/:id', (req, res, next) => {
       res.status(404).json({message: 'Post not found!'});
     }
 
-  });
+  })
+  .catch(error => {
+    res.status(500).json({
+      message: "Fetching posts failed!"
+    })
+  })
 
-} );
+});
 
 router.put(
   '/:id',
@@ -117,7 +131,12 @@ router.put(
         res.status(401).json({message: "Unathorized!"});
       }
 
-    });
+    })
+    .catch( error => {
+      res.status(500).json({
+        message: "Couldn't update the post!"
+      })
+    })
 });
 
 router.delete(
@@ -131,9 +150,12 @@ router.delete(
       else{
         res.status(401).json({message: "Unathorized!"});
       }
-    });
-    //console.log(req.params.id);
-    //res.status(200).json({message: "Post deleted!"});
+    })
+    .catch(error => {
+      res.status(500).json({
+        message: "Fetching posts failed!"
+      })
+    })
 })
 
 module.exports= router;
