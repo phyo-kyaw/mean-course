@@ -1,0 +1,23 @@
+{
+  "name": "mean-project",
+  "version": "0.0.0",
+  "scripts": {
+    "ng": "ng",
+    "start": "ng serve",
+    "build": "ng build",
+    "test": "ng test",
+    "lint": "ng lint",
+    "e2e": "ng e2e",
+    "start:server": "nodemon ./backend/server.js"
+  },
+  "private": true,
+  "dependencies": {
+    "bcryptjs": "^2.4.3",
+    "body-parser": "^1.18.3",
+    "express": "^4.16.3",
+    "jsonwebtoken": "^8.5.1",
+    "mongoose": "^5.9.27",
+    "mongoose-unique-validator": "^2.0.3",
+    "multer": "^1.4.2"
+  }
+}

@@ -3,7 +3,7 @@
 
 //mongo "mongodb+srv://cluster0.wrnba.mongodb.net/node-angular" --username admin
 
-const app = require("./backend/app");
+const app = require("./app");
 const debug = require("debug")("node-angular");
 const http = require("http");
 
